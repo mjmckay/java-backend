@@ -1,5 +1,6 @@
 #Download image from artifactory
 ARG REGISTRY
+ARG APIKEY
 FROM openjdk:11-jdk
 #FROM $REGISTRY/openjdk:11-jdk
 
@@ -7,14 +8,15 @@ WORKDIR /app
 
 #Define ARG Again -ARG variables declared before the first FROM need to be declered again
 ARG REGISTRY
+ARG APIKEY
 MAINTAINER Elad Hirsch
 
 # Download artifacts from Artifactory
-RUN curl $REGISTRY/demo-mvn-virtual/com/jfrog/backend/1.0.0/backend-1.0.0.jar
-RUN curl $REGISTRY/demo-npm-virtual/frontend/-/frontend-3.0.0.tgz
+RUN curl -H "X-JFrog-Art-Api:$APIKEY" --output server.jar $REGISTRY/demo-mvn-virtual/com/jfrog/backend/1.0.0/backend-1.0.0.jar
+RUN curl -H "X-JFrog-Art-Api:$APIKEY" --output client.tgz $REGISTRY/demo-npm-virtual/frontend/-/frontend-3.0.0.tgz
 
 #Extract vue app
-RUN tar -xzf frontend-3.0.0.tgz && rm client.tgz
+RUN tar -xzf client.tgz && rm client.tgz
 
 # Set JAVA OPTS + Static file location
 ENV STATIC_FILE_LOCATION="/app/package/target/dist/"
