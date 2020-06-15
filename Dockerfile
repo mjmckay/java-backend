@@ -10,11 +10,11 @@ ARG REGISTRY
 MAINTAINER Elad Hirsch
 
 # Download artifacts from Artifactory
-RUN curl $REGISTRY/demo-mvn-virtual/com/jfrog/backend/1.0.0/backend-1.0.0.jar --output server.jar
-RUN curl $REGISTRY/demo-npm-virtual/frontend/-/frontend-3.0.0.tgz --output client.tgz
+RUN curl $REGISTRY/demo-mvn-virtual/com/jfrog/backend/1.0.0/backend-1.0.0.jar
+RUN curl $REGISTRY/demo-npm-virtual/frontend/-/frontend-3.0.0.tgz
 
 #Extract vue app
-RUN tar -xzf client.tgz && rm client.tgz
+RUN tar -xzf frontend-3.0.0.tgz && rm client.tgz
 
 # Set JAVA OPTS + Static file location
 ENV STATIC_FILE_LOCATION="/app/package/target/dist/"
