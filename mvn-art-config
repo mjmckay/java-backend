@@ -3,8 +3,8 @@ type: maven
 resolver:
   snapshotRepo: demo-mvn-virtual
   releaseRepo: demo-mvn-virtual
-  serverID: artifactory
+  serverID: demoArt
 deployer:
   snapshotRepo: demo-mvn-virtual
   releaseRepo: demo-mvn-virtual
-  serverID: artifactory
+  serverID: demoArt
