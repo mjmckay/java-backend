@@ -1,10 +1,10 @@
 version: 1
 type: maven
 resolver:
-  snapshotRepo: libs-snapshot
-  releaseRepo: libs-release
+  snapshotRepo: demo-mvn-virtual
+  releaseRepo: demo-mvn-virtual
   serverID: artifactory
 deployer:
-  snapshotRepo: libs-snapshot-local
-  releaseRepo: libs-release-local
+  snapshotRepo: demo-mvn-virtual
+  releaseRepo: demo-mvn-virtual
   serverID: artifactory
