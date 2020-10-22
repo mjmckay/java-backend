@@ -12,8 +12,8 @@ ARG APIKEY
 MAINTAINER Elad Hirsch
 
 # Download artifacts from Artifactory
-RUN curl -H "X-JFrog-Art-Api:$APIKEY" --output server.jar $REGISTRY/demo-mvn-virtual/com/jfrog/backend/1.0.0/backend-1.0.0.jar
-RUN curl -H "X-JFrog-Art-Api:$APIKEY" --output client.tgz $REGISTRY/demo-npm-virtual/frontend/-/frontend-3.0.0.tgz
+RUN curl -H "X-JFrog-Art-Api:$APIKEY" --output server.jar https://mjmckay.jfrog.io/artifactory/demo-mvn-virtual/com/jfrog/backend/1.0.0/backend-1.0.0.jar
+RUN curl -H "X-JFrog-Art-Api:$APIKEY" --output client.tgz http://mjmckay.jfrog.io/artifactory/demo-npm-virtual/frontend/-/frontend-3.0.0.tgz
 
 #Extract vue app
 RUN tar -xzf client.tgz && rm client.tgz
